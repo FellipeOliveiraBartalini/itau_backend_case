@@ -1,7 +1,6 @@
 package com.itaucase.demo.models;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,20 +21,20 @@ public class TodoModel implements Serializable {
     private String title;
     @Column(nullable = false)
     private String description;
-    @Column(nullable = false, name = "created_at")
-    private LocalDateTime createdAt;
-    @Column(nullable = true, name = "completed_at")
-    private LocalDateTime completedAt;
+    @Column(nullable = false)
+    private String created_at;
+    @Column(nullable = true)
+    private String completed_at;
 
     public TodoModel() {
     }
 
-    public TodoModel(Long id, String title, String description, LocalDateTime created_at, LocalDateTime completedAt) {
+    public TodoModel(Long id, String title, String description, String created_at, String completed_at) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.createdAt = created_at;
-        this.completedAt = completedAt;
+        this.created_at = created_at;
+        this.completed_at = completed_at;
     }
 
     public Long getId() {
@@ -62,19 +61,26 @@ public class TodoModel implements Serializable {
         this.description = description;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public String getCreatedAt() {
+        return created_at;
     }
 
-    public void setCreatedAt(LocalDateTime created_at) {
-        this.createdAt = created_at;
+    public void setCreatedAt(String created_at) {
+        this.created_at = created_at;
     }
 
-    public LocalDateTime getCompletedAt() {
-        return completedAt;
+    public String getCompletedAt() {
+        return completed_at;
     }
 
-    public void setCompletedAt(LocalDateTime completed_at) {
-        this.completedAt = completed_at;
+    public void setCompletedAt(String completed_at) {
+        this.completed_at = completed_at;
+    }
+
+    @Override
+    public String toString() {
+        return "TodoModel [id=" + id + ", title=" + title + ", description=" + description + ", created_at="
+                + created_at
+                + ", completed_at=" + completed_at + "]";
     }
 }

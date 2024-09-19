@@ -1,5 +1,6 @@
 package com.itaucase.demo.dtos;
 
+import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotBlank;
 
 public class TodoDto {
@@ -9,17 +10,18 @@ public class TodoDto {
     @NotBlank
     private String description;
     @NotBlank
-    private String createdAt;
-    private String completedAt;
+    private String created_at;
+    @Nullable
+    private String completed_at;
 
     public TodoDto() {
     }
 
-    public TodoDto(String title, String description, String createdAt, String completedAt) {
+    public TodoDto(String title, String description, String created_at, String completed_at) {
         this.title = title;
         this.description = description;
-        this.createdAt = createdAt;
-        this.completedAt = completedAt;
+        this.created_at = created_at;
+        this.completed_at = completed_at;
     }
 
     public String getTitle() {
@@ -39,18 +41,24 @@ public class TodoDto {
     }
 
     public String getCreatedAt() {
-        return createdAt;
+        return created_at;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedAt(String created_at) {
+        this.created_at = created_at;
     }
 
     public String getCompletedAt() {
-        return completedAt;
+        return completed_at;
     }
 
-    public void setCompletedAt(String completedAt) {
-        this.completedAt = completedAt;
+    public void setCompletedAt(String completed_at) {
+        this.completed_at = completed_at;
+    }
+
+    @Override
+    public String toString() {
+        return "TodoDto [title=" + title + ", description=" + description + ", created_at=" + created_at
+                + ", completed_at=" + completed_at + "]";
     }
 }
